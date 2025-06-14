@@ -11,13 +11,15 @@ import java.io.FileInputStream
 class FirebaseConfig {
 
     @PostConstruct
-    fun initialize() {
-        val serviceAccount = FileInputStream("path/to/serviceAccountKey.json")
+    fun initFirebase() {
+        val serviceAccount = FileInputStream("src/main/resources/firebase/serviceAccountKey.json")
 
         val options = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
             .build()
 
-        FirebaseApp.initializeApp(options)
+        if (FirebaseApp.getApps().isEmpty()) {
+            FirebaseApp.initializeApp(options)
+        }
     }
 }

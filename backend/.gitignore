@@ -38,3 +38,10 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### Firebase ###
+**/firebase/*.json
+
+### Test DB ###
+/backend/data/
+*.mv.db
